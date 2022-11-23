@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript RPS</title>
+</head>
+<body>
+    <script>
+      let playerChoice = prompt();
+
+      let playerFinal;
+      let computerFinal;
+
+      let playerScore = 0;
+      let computerScore = 0;
+
+      function getComputerChoice(){
+        let elements = ["Rock", "Paper", "Scissors"];
+        let computerChoice;
+        
+        computerChoice = elements[Math.floor(Math.random() * elements.length)];
+        console.log(`Computer chose ${computerChoice}`);
+
+        switch(computerChoice){
+            case "Rock":
+              computerValue = 0;
+              break;
+            case "Paper":
+              computerValue = 1;
+              break;
+            case "Scissors":
+              computerValue = 2;
+              break;
+        }
+
+          return computerValue;
+      }  
+
+      function assignValue(){ 
+        let playerValue;
+
+        console.log(`Player chose ${playerChoice}`);
+        switch(playerChoice){
+            case "rock":
+              playerValue = 0;
+              break;
+            case "paper":
+              playerValue = 1;
+              break;
+            case "scissors":
+              playerValue = 2;
+              break;
+        }
+
+          return playerValue;
+      }
+
+      
+        playRound(assignValue(), getComputerChoice());
+     
+
+      function playRound(playerFinal, computerFinal)
+      {
+         if(playerFinal === computerFinal){
+            console.log("It's a tie!");
+         }
+         else if(playerFinal > computerFinal && playerFinal != 2 || playerFinal > computerFinal && computerFinal != 0){
+            console.log("Round won!");
+            playerScore++;
+         }
+         else{
+            console.log("Round lost!");
+            computerScore++;
+         }
+
+         console.log("Score: " + playerScore + " : " + computerScore);
+
+         if(playerScore < 5 && computerScore < 5){
+           playerChoice = prompt();
+           playRound(assignValue(), getComputerChoice());
+         }
+         else if(playerScore == 5){
+           console.log("You won!");
+         }
+         else if(computerScore == 5){
+            console.log("You lose...");
+         }
+      }
+
+      
+      
+    </script>
+</body>
+</html>
